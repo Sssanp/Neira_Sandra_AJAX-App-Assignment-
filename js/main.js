@@ -1,6 +1,6 @@
 (() => {
 
-  //it tooks me forver but finally I got it to work :'D
+  //it took me forever but finally I got it to work :'D
 
   // Variables
   const model = document.querySelector("#model");
@@ -15,17 +15,16 @@
       hotspot.style.display = "block";
     });
   }
-  //I dont know if this is how it supposed to work, i put the spinner that covers the entire screen
 
   // Function to show the spinner
   function showSpinner() {
-    const spinnerContainer = document.getElementById("spinner-container");
+    const spinnerContainer = document.querySelector("#spinner-container");
     spinnerContainer.style.display = "block";
   }
 
   // Function to hide the spinner
   function hideSpinner() {
-    const spinnerContainer = document.getElementById("spinner-container");
+    const spinnerContainer = document.querySelector("#spinner-container");
     spinnerContainer.style.display = "none";
   }
 
@@ -47,7 +46,6 @@
         if (infoBoxes && infoBoxes.length > 0) {
           infoBoxes.forEach((infoBox, index) => {
             let selected = document.querySelector(`#hotspot-${index + 1}`);
-            // Create and set the elements as instructed
             let infotext = document.createElement('h2');
             infotext.textContent = infoBox.heading;
             let infopara = document.createElement('p');
@@ -56,7 +54,6 @@
             infoimage.src = `images/${infoBox.thumbnail}`;
             infoimage.alt = "Description of the image";
             infoimage.classList.add("info-image");
-
             selected.appendChild(infotext);
             selected.appendChild(infopara);
             selected.appendChild(infoimage);
@@ -72,8 +69,6 @@
       .finally(() => {
         hideSpinner();
       });
-
-
   }
 
   // Function to load materials
@@ -89,8 +84,8 @@
       })
       .then(materials => {
         if (materials && materials.length > 0) {
-          const materialsList = document.getElementById('materials-list');
-          const template = document.getElementById('materials-template');
+          const materialsList = document.querySelector('#materials-list');
+          const template = document.querySelector('#materials-template');
 
           materials.forEach(material => {
             const clone = document.importNode(template.content, true);
@@ -142,4 +137,3 @@
     loadMaterials();
   });
 })();
-
